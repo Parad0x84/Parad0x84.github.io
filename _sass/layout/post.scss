@@ -31,6 +31,18 @@ h1 + .post-meta {
   }
 }
 
+
+.read-time-span
+{ 
+  @extend %text-sm;
+  color: var(--text-muted-color);
+  float:right
+}
+.my-class{
+  color: var(--text-muted-hightlight-color);
+  font-weight: 600;
+}
+
 .post-tail-wrapper {
   @extend %text-sm;
 

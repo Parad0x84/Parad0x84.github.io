@@ -15,7 +15,7 @@ tail_includes:
   <header>
     <h1 data-toc-skip>{{ page.title }}</h1>
 
-    <div class="post-meta text-muted">
+    <span class="post-meta text-muted">
       <!-- published date -->
       <span>
         {{ site.data.locales[lang].post.posted }}
@@ -29,7 +29,15 @@ tail_includes:
           {% include datetime.html date=page.last_modified_at tooltip=true lang=lang %}
         </span>
       {% endif %}
+    </span>
 
+    <!-- read time -->
+    <span class="read-time-span">
+      {% include read-time.html content=content prompt=true lang=lang %}
+    </span>
+    
+    <!-- page image -->
+    <div class="post-meta text-muted">
       {% if page.image %}
         {% capture src %}src="{{ page.image.path | default: page.image }}"{% endcapture %}
         {% capture class %}class="preview-img{% if page.image.no_bg %}{{ ' no-bg' }}{% endif %}"{% endcapture %}
@@ -46,34 +54,6 @@ tail_includes:
           {%- endif -%}
         </div>
       {% endif %}
-
-      <div class="d-flex justify-content-between">
-        <!-- author(s) -->
-        <span>
-          {% if page.author %}
-            {% assign authors = page.author %}
-          {% elsif page.authors %}
-            {% assign authors = page.authors %}
-          {% endif %}
-
-          {{ site.data.locales[lang].post.written_by }}
-
-          <em>
-            {% if authors %}
-              {% for author in authors %}
-                <a href="{{ site.data.authors[author].url }}">{{ site.data.authors[author].name }}</a>
-                {% unless forloop.last %}{{ '</em>, <em>' }}{% endunless %}
-              {% endfor %}
-            {% else %}
-              <a href="{{ site.social.links[0] }}">{{ site.social.name }}</a>
-            {% endif %}
-          </em>
-        </span>
-
-        <!-- read time -->
-        {% include read-time.html content=content prompt=true lang=lang %}
-      </div>
-      <!-- .d-flex -->
     </div>
     <!-- .post-meta -->
   </header>
