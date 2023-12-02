@@ -5,7 +5,6 @@ panel_includes:
   - toc
 tail_includes:
   - related-posts
-  - post-nav
   - comments
 ---
 
@@ -47,10 +46,10 @@ tail_includes:
           {%- capture lqip -%}lqip="{{ page.image.lqip }}"{%- endcapture -%}
         {% endif %}
 
-        <div class="mt-3 mb-3">
+        <div class="mt-3 mb-0">
           <img {{ src }} {{ class }} {{ alt }} w="1200" h="630" {{ lqip }}>
           {%- if page.image.alt -%}
-            <figcaption class="text-center pt-2 pb-2">{{ page.image.alt }}</figcaption>
+            <figcaption class="text-center pt-1 pb-0">{{ page.image.alt }}</figcaption>
           {%- endif -%}
         </div>
       {% endif %}
@@ -59,8 +58,7 @@ tail_includes:
   </header>
 
   <!-- separator line -->
-  <br>
-  <hr style="width:75%;border-block-width:2px;margin-left:auto;margin-right:auto;border-color:white;">
+  <hr style="border-block-width:2px;margin-left:auto;margin-right:auto;border-color:white; margin-top: 1; margin-bottom:0; padding-top: 0; padding-bottom: 0;">
 
   <div class="content">
     {{ content }}
@@ -68,60 +66,58 @@ tail_includes:
 
   <!-- separator line -->
   <br>
-  <hr style="width:75%;border-block-width:2px;margin-left:auto;margin-right:auto;border-color:white;">
-  <br>
+  <hr style="border-block-width:2px;margin-left:auto;margin-right:auto;border-color:white; margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 0;">
 
-  <div class="post-tail-wrapper text-muted">
+  <span class="post-tail-wrapper text-muted">
+    <!-- Copyright notice -->
+  <span class="post-tail-bottom d-flex justify-content-between align-items-center">
+    <div class="license-wrapper">
+      {% if site.data.locales[lang].copyright.license.template %}
+        {% capture _replacement %}
+      <a href="{{ site.data.locales[lang].copyright.license.link }}">
+        {{ site.data.locales[lang].copyright.license.name }}
+      </a>
+      {% endcapture %}
+
+        {{ site.data.locales[lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
+      {% endif %}
+    </div>
+
+    <!-- Share icons -->
+      {% include post-sharing.html lang=lang %}
+  </span>
+    <!-- .post-tail-bottom -->
+
+
+    <!-- Top space -->
+    <span class="br-category-tag-top"></span>
+
+
     <!-- categories -->
     {% if page.categories.size > 0 %}
-      <div class="post-meta mb-3">
-        <i class="far fa-folder-open fa-fw me-1"></i>
-        {% for category in page.categories %}
-          <a href="{{ site.baseurl }}/categories/{{ category | slugify | url_encode }}/">{{ category }}</a>
-          {%- unless forloop.last -%},{%- endunless -%}
-        {% endfor %}
-      </div>
-    {% endif %}
-
-    <!-- tags -->
-    {% if page.tags.size > 0 %}
-      <div class="post-tags">
-        <i class="fa fa-tags fa-fw me-1"></i>
-        {% for tag in page.tags %}
-          <a
-            href="{{ site.baseurl }}/tags/{{ tag | slugify | url_encode }}/"
-            class="post-tag no-text-decoration"
-          >
-            {{- tag -}}
-          </a>
-        {% endfor %}
-      </div>
-    {% endif %}
-
-    <div
-      class="
-        post-tail-bottom
-        d-flex justify-content-between align-items-center mt-5 pb-2
-      "
-    >
-      <div class="license-wrapper">
-        {% if site.data.locales[lang].copyright.license.template %}
-          {% capture _replacement %}
-        <a href="{{ site.data.locales[lang].copyright.license.link }}">
-          {{ site.data.locales[lang].copyright.license.name }}
-        </a>
-        {% endcapture %}
-
-          {{ site.data.locales[lang].copyright.license.template | replace: ':LICENSE_NAME', _replacement }}
-        {% endif %}
-      </div>
-
-      {% include post-sharing.html lang=lang %}
+    <div class="post-meta mb-0 mt-0">
+      <i class="far fa-folder-open fa-fw me-1"></i>
+      {% for category in page.categories %}
+        <a href="{{ site.baseurl }}/categories/{{ category | slugify | url_encode }}/">{{ category }}</a>
+        {%- unless forloop.last -%},{%- endunless -%}
+      {% endfor %}
     </div>
-    <!-- .post-tail-bottom -->
-  </div>
+    {% endif %}
+
+  <!-- tags -->
+    {% if page.tags.size > 0 %}
+    <div class="post-tags mb-0 mt-0">
+      <i class="fa fa-tags fa-fw me-1"></i>
+      {% for tag in page.tags %}
+        <a href="{{ site.baseurl }}/tags/{{ tag | slugify | url_encode }}/" class="post-tag no-text-decoration">
+          {{- tag -}}
+        </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </span>
   <!-- div.post-tail-wrapper -->
 
-  <hr style="border-block-width:2px;margin-left:auto;margin-right:auto;border-color:white;">
-
+  <!-- Botttom space -->
+  <span class="br-category-tag-bottom"></span>
 </article>
