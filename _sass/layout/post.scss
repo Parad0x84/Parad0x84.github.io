@@ -46,8 +46,6 @@ h1 + .post-meta {
 .post-tail-wrapper {
   @extend %text-sm;
 
-  border-bottom: 1px double var(--main-border-color);
-
   .license-wrapper {
     line-height: 1.2rem;
 
