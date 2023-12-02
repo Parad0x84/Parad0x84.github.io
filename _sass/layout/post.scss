@@ -36,7 +36,7 @@ h1 + .post-meta {
 { 
   @extend %text-sm;
   color: var(--text-muted-color);
-  float:right
+  float:right;
 }
 .my-class{
   color: var(--text-muted-hightlight-color);
@@ -46,7 +46,6 @@ h1 + .post-meta {
 .post-tail-wrapper {
   @extend %text-sm;
 
-  margin-top: 6rem;
   border-bottom: 1px double var(--main-border-color);
 
   .license-wrapper {
