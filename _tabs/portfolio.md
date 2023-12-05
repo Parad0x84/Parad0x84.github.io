@@ -1,6 +1,6 @@
 ---
 layout: portfolio
-icon: fas fa-archive
+icon: fas fa-briefcase
 order: 4
 ---
 
