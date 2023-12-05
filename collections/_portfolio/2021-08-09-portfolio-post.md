@@ -1,8 +1,5 @@
 ---
-title: Other Portfolio Post
-layout: portfolio-post
-toc: true
-comments: true
+title: Portfolio Post
 ---
 
 asd fas gdsjg a sa lorem ipsum dolor

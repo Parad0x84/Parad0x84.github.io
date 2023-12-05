@@ -125,25 +125,40 @@ kramdown:
       line_numbers: true
       start_line: 1
 
+
+
+collections_dir: collections
+
 collections:
   tabs:
     output: true
     sort_by: order
+  posts:
+    output: true
   portfolio:
     output: true
-    permalink: /portfolio/:title/
 
 defaults:
   - scope:
-      path: "" # An empty string here means all files in the project
-      type: posts
+      path: "_posts" # An empty string here means all files in the project
+      # type: posts
     values:
       layout: post
       comments: true # Enable comments in posts.
       toc: true # Display TOC column in posts.
       # DO NOT modify the following parameter unless you are confident enough
       # to update the code of all other post links in this project.
-      permalink: /blog/:title/
+      permalink: /post/:title/
+  - scope:
+      path: "_portfolio"
+    values:
+      layout: portfolio-post
+      comments: true
+      toc: true
+      permalink: /portfolio/:title/
+  #
+  ##
+  #
   - scope:
       path: _drafts
     values:
@@ -184,6 +199,8 @@ exclude:
   - LICENSE
   - rollup.config.js
   - package*.json
+  - "*.bat"
+  - CNAME
 
 jekyll-archives:
   enabled: [categories, tags]
