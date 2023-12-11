@@ -54,6 +54,8 @@ FVector4 ActionSafePaddingSize;
 
 we are only interested in `MonitorInfo` for the purposes of this article, but feel free to play around. It is a list of all the displays.
 
+<br />
+
 `FMonitorInfo` contains following members:
 ```cpp
 FString Name;
@@ -68,6 +70,8 @@ int32 DPI = 0;
 ```
 > If you wanna check the resolution of the displays use `NativeWidth` and `NativeHeight`. For some reason `MaxResolution` didn't work for me. Keep in mind it might be a bug on my end or an issue with the engine
 {: .prompt-warning }
+
+<br />
 
 I'm not gonna dive into it any further, but for creating this kind of an option UI, you have everything in these structs. For the sake of simplicity I'll assume you already know which display you wanna change to.
 
@@ -112,6 +116,8 @@ if(GEngine && GEngine->GameViewport)
     nativeWindow->SetWindowMode(EWindowMode::WindowedFullscreen);
 }
 ```
+
+<br />
 
 Ideally you could just handle it from `UGameViewportClient` and it would be exposed to the Blueprints too, but here we are.
 
