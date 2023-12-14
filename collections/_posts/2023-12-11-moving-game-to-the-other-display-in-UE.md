@@ -30,7 +30,7 @@ But unfortunately, the function I'm looking for isn't exposed to the `UGameUserS
 
 ## The Solution
 
-I have to admit, it was a loot deeper than I thought but here is the solution I found:
+I tinkered around for a while and tried a lot of stuff which didn't work. Finally I have found a solution:
 
 First of all we need a way to retrieve a list of displays that is connected to players PC.
 
@@ -105,15 +105,21 @@ const FVector2D WindowPosition = FVector2D(TargetDisplay.DisplayRect.Left, Targe
 
 if(GEngine && GEngine->GameViewport)
 {
-    // Here we are getting native window. A lot deeper than I intended...
-    TSharedPtr<FGenericWindow> nativeWindow = GEngine->GameViewport->GetWindow()->GetNativeWindow();
+    // Here we are getting the slate window
+    const TSharedPtr<SWindow> GWindow = GEngine->GameViewport->GetWindow();
 
     // Basically we are getting into windowed mode and moving window to the target display
     // Then we are going back into fullscreen or windowed fullscreen
     // Not clean, not the best way, but it's the only way works (which I can find)
-    nativeWindow->SetWindowMode(EWindowMode::Windowed);
-    nativeWindow->MoveWindowTo(WindowPosition.X, WindowPosition.Y);
-    nativeWindow->SetWindowMode(EWindowMode::WindowedFullscreen);
+    GWindow->SetWindowMode(EWindowMode::Windowed);
+    // -> Here
+    GWindow->MoveWindowTo(WindowPosition);
+    GWindow->SetWindowMode(EWindowMode::WindowedFullscreen);
+
+    // Optionally you can resize the window to a very small size before moving it to ensure correct behaviour
+    // As far as I know, for a window to be counted in a display only more than half of it needs to be inside
+    // So I did place following line to the marked line above (line 35):
+    // GWindow->Resize(FVector2D(800, 600)); 
 }
 ```
 
