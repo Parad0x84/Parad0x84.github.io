@@ -6,7 +6,7 @@ order: 3
 
 Hi &nbsp; <i class="fa-solid fa-hand" style="color: #fff700;"></i>
 
-I'm a game developer and a game engine hobbyist. I'm working in the industry for 3+ years, and I would like to share my knowladge and experience here and there in this website and some other platforms.
+I'm a game developer and a game engine hobbyist. I'm working in the industry for 4+ years, and I would like to share my knowladge and experience here and there in this website and some other platforms.
 
 <br />
 
