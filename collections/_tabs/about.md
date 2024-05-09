@@ -35,7 +35,7 @@ Professionally:
 
 <br />
 
-As a hobby:
+As a hobby/side project:
 - Game Engines & 3D applications
     + Basic OpenGL
     + Basic Vulkan
@@ -44,8 +44,11 @@ As a hobby:
     + ImGui & ImGuizmo
     + stb libraries
     + glm
+- Build Systems
+    + CMake
+    + Premake
+    + Custom build system built on top of CMake (work in progress)
 - Jekyll & Github Pages (which this site built on)
-- Basic AI Programming with nvidia libraries
 - Basic Discord Bot Programming
 - Basic Chrome extensions
 - Basic Arduino Programming
